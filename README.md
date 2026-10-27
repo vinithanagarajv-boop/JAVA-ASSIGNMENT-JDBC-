@@ -3,6 +3,11 @@
 
 All project files and documentation are organized inside the [**JDBC java project**](./JDBC%20java%20project/) folder.
 
+### 📄 Project Report
+* **Student Name**: VINITHA N (Roll No: **25ITR174**)
+* **Course**: 24ITT32 - Programming in Java
+* **Project Report PDF**: [**Project_Report_VINITHA_N_25ITR174.pdf**](./JDBC%20java%20project/Project_Report_VINITHA_N_25ITR174.pdf)
+
 ### Directory Structure
 ```
 d:\java assignment\

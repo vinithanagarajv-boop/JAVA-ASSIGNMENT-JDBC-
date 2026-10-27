@@ -15,10 +15,11 @@
   - [`ConsoleReportFormatter.java`](file:///d:/java%20assignment/ConsoleReportFormatter.java): Clean ASCII/boxed console reporting.
   - [`HtmlReportGenerator.java`](file:///d:/java%20assignment/HtmlReportGenerator.java): Official autonomous Grade Card HTML generator.
   - [`MainApp.java`](file:///d:/java%20assignment/MainApp.java): Interactive menu-driven interface and automated demo runner.
-- [x] **Execution Documentation & Proofs** ([`docs/EXECUTION_DOCUMENTATION.md`](file:///d:/java%20assignment/docs/EXECUTION_DOCUMENTATION.md)):
+- [x] **Execution Documentation & Proofs** ([`docs/EXECUTION_DOCUMENTATION.md`](./docs/EXECUTION_DOCUMENTATION.md)):
   - Adding a student and course proof
   - Incremental marks entry (CIA1, CIA2, Assignment, ESE) proof
   - Generated Grade Sheet with calculated SGPA proof
+- [x] **Official Project Report PDF** ([`Project_Report_VINITHA_N_25ITR174.pdf`](./Project_Report_VINITHA_N_25ITR174.pdf)): Complete 28-page project submission report by **Vinitha N (25ITR174)** for 24ITT32 - Programming in Java.
 
 ---
 
