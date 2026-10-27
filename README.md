@@ -1,17 +1,36 @@
 # Kongu Engineering College (Autonomous) - Regulation 2024
 ## Student Academic & Continuous Evaluation System using Java JDBC
 
-All project files and documentation are organized inside the [**JDBC java project**](./JDBC%20java%20project/) folder.
+---
 
-### 📄 Project Report
-* **Student Name**: VINITHA N (Roll No: **25ITR174**)
+### 📂 Repository Structure
+This repository is organized into two main folders:
+
+1. [**`JDBC java project/`**](./JDBC%20java%20project/) — Complete Java source code, MySQL JDBC connection, database schema (`kec_schema.sql`), batch build scripts, and execution proofs.
+2. [**`jdbc_PROJECT-REPORT/`**](./jdbc_PROJECT-REPORT/) — Dedicated project report folder containing the complete 28-page official project report PDF submitted by **VINITHA N (25ITR174)**.
+
+---
+
+### 📄 Official Project Report
+* **Student Name**: VINITHA N
+* **Roll Number**: 25ITR174
+* **Department**: Information Technology (IT)
 * **Course**: 24ITT32 - Programming in Java
-* **Project Report PDF**: [**Project_Report_VINITHA_N_25ITR174.pdf**](./JDBC%20java%20project/Project_Report_VINITHA_N_25ITR174.pdf)
+* **Report Folder**: [**`jdbc_PROJECT-REPORT/`**](./jdbc_PROJECT-REPORT/)
+* **Direct PDF Link**: [**`Project_Report_VINITHA_N_25ITR174.pdf`**](./jdbc_PROJECT-REPORT/Project_Report_VINITHA_N_25ITR174.pdf)
 
-### Directory Structure
+---
+
+### Directory Tree
 ```
 d:\java assignment\
-└── JDBC java project/
+├── README.md
+├── jdbc_PROJECT-REPORT/                               <-- Dedicated Project Report Folder
+│   ├── README.md
+│   ├── Project_Report_VINITHA_N_25ITR174.pdf
+│   └── JAVA_ASSIGNMENT_VINITHA_N_25ITR174.pdf
+│
+└── JDBC java project/                                 <-- Java Source Code & JDBC Application
     ├── compile.bat
     ├── run.bat
     ├── run_demo.bat
@@ -45,18 +64,14 @@ d:\java assignment\
         └── 24ITR001_Sem1_MarkSheet.html
 ```
 
-### Running the Application
+---
 
-Navigate to the project folder:
+### How to Run the Application
+
 ```cmd
 cd /d "D:\java assignment\JDBC java project"
 ```
 
-Then run:
-```cmd
-run.bat
-```
-or for automated demo:
-```cmd
-run_demo.bat
-```
+* **Interactive CLI Menu**: `run.bat`
+* **Automated Demonstration & Reports**: `run_demo.bat`
+* **Compile Sources**: `compile.bat`
