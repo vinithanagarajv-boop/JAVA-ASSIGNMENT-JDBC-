@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEC Mark Sheet - 24ITR001</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --accent: #d97706;
+      --bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.85);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.15);
+      --pass: #10b981;
+      --fail: #ef4444;
+      --warning: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #0f172a 80%);
+      color: var(--text);
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.1);
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 25px;
+      margin-bottom: 30px;
+    }
+    .header .college-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #60a5fa;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .header .sub-title {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .header .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      margin-bottom: 30px;
+    }
+    .info-item .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .info-item .value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      font-size: 13px;
+    }
+    th {
+      background: rgba(37, 99, 235, 0.2);
+      color: #93c5fd;
+      padding: 12px 10px;
+      text-align: left;
+      font-weight: 700;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      color: #e2e8f0;
+    }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .grade-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 12px;
+      text-align: center;
+    }
+    .grade-O  { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .grade-AP { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+    .grade-A  { background: rgba(99, 102, 241, 0.2); color: #818cf8; border: 1px solid #6366f1; }
+    .grade-BP { background: rgba(234, 179, 8, 0.2); color: #fde047; border: 1px solid #eab308; }
+    .grade-B  { background: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid #f97316; }
+    .grade-RA { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+    .grade-SA { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid #a855f7; }
+    .grade-AB { background: rgba(100, 116, 139, 0.3); color: #cbd5e1; border: 1px solid #64748b; }
+    .status-pass { color: var(--pass); font-weight: 700; }
+    .status-fail { color: var(--fail); font-weight: 700; }
+    .status-sa   { color: #c084fc; font-weight: 700; }
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .stat-card {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-size: 26px;
+      font-weight: 800;
+      color: #60a5fa;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-card .desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .rules-footer {
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .footer-signs {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="college-title">Kongu Engineering College</div>
+      <div class="sub-title">(Autonomous) | Affiliated to Anna University | Perundurai, Erode - 638060</div>
+      <div class="badge">Regulation 2024 (R2024) - Semester Grade Sheet</div>
+    </div>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">Roll Number</div><div class="value mono">24ITR001</div></div>
+      <div class="info-item"><div class="label">Student Name</div><div class="value">Arun Kumar S</div></div>
+      <div class="info-item"><div class="label">Department</div><div class="value">IT</div></div>
+      <div class="info-item"><div class="label">Semester</div><div class="value mono">1</div></div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th><th>Course Title</th><th>Type</th><th>Cr</th><th>Attd %</th>
+          <th>CIA1</th><th>CIA2</th><th>Asgn</th><th>CIA Sc</th><th>ESE Raw</th><th>ESE Sc</th><th>Total</th><th>Grade</th><th>GP</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono"><strong>24CSC11</strong></td>
+          <td>Problem Solving and Python Programming</td>
+          <td>EMBEDDED</td>
+          <td class="mono">4</td>
+          <td class="mono">91.7%</td>
+          <td class="mono">88</td>
+          <td class="mono">92</td>
+          <td class="mono">90</td>
+          <td class="mono"><strong>45.0</strong></td>
+          <td class="mono">90</td>
+          <td class="mono"><strong>45.0</strong></td>
+          <td class="mono" style="font-size:14px; font-weight:800;">90</td>
+          <td><span class="grade-badge grade-AP">A+</span></td>
+          <td class="mono" style="font-weight:700;">9</td>
+          <td class="status-pass">PASS</td>
+        </tr>
+        <tr>
+          <td class="mono"><strong>24EEL11</strong></td>
+          <td>Basic Electrical and Electronics Engineering Practice</td>
+          <td>PRACTICAL</td>
+          <td class="mono">2</td>
+          <td class="mono">93.3%</td>
+          <td class="mono">95</td>
+          <td class="mono">96</td>
+          <td class="mono">98</td>
+          <td class="mono"><strong>57.8</strong></td>
+          <td class="mono">92</td>
+          <td class="mono"><strong>36.8</strong></td>
+          <td class="mono" style="font-size:14px; font-weight:800;">95</td>
+          <td><span class="grade-badge grade-O">O</span></td>
+          <td class="mono" style="font-weight:700;">10</td>
+          <td class="status-pass">PASS</td>
+        </tr>
+        <tr>
+          <td class="mono"><strong>24MAC11</strong></td>
+          <td>Matrices and Calculus</td>
+          <td>THEORY</td>
+          <td class="mono">4</td>
+          <td class="mono">93.3%</td>
+          <td class="mono">92</td>
+          <td class="mono">95</td>
+          <td class="mono">90</td>
+          <td class="mono"><strong>37.0</strong></td>
+          <td class="mono">94</td>
+          <td class="mono"><strong>56.4</strong></td>
+          <td class="mono" style="font-size:14px; font-weight:800;">93</td>
+          <td><span class="grade-badge grade-O">O</span></td>
+          <td class="mono" style="font-weight:700;">10</td>
+          <td class="status-pass">PASS</td>
+        </tr>
+        <tr>
+          <td class="mono"><strong>24PHC11</strong></td>
+          <td>Engineering Physics</td>
+          <td>THEORY</td>
+          <td class="mono">3</td>
+          <td class="mono">93.3%</td>
+          <td class="mono">85</td>
+          <td class="mono">88</td>
+          <td class="mono">85</td>
+          <td class="mono"><strong>34.4</strong></td>
+          <td class="mono">86</td>
+          <td class="mono"><strong>51.6</strong></td>
+          <td class="mono" style="font-size:14px; font-weight:800;">86</td>
+          <td><span class="grade-badge grade-AP">A+</span></td>
+          <td class="mono" style="font-weight:700;">9</td>
+          <td class="status-pass">PASS</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="summary-cards">
+      <div class="stat-card"><div class="num">13</div><div class="desc">Credits Registered</div></div>
+      <div class="stat-card"><div class="num">13</div><div class="desc">Credits Earned</div></div>
+      <div class="stat-card"><div class="num" style="color:#34d399;">9.46</div><div class="desc">SGPA (Out of 10)</div></div>
+      <div class="stat-card"><div class="num" style="color:#fde047;">94.60%</div><div class="desc">Equivalent Percentage</div></div>
+      <div class="stat-card"><div class="num" style="font-size:18px;">ALL CLEAR / PASS</div><div class="desc">Overall Semester Result</div></div>
+    </div>
+    <div class="rules-footer">
+      <strong>Regulation 2024 Evaluation Framework:</strong><br>
+      &bull; <strong>THEORY:</strong> CIA 40% | ESE 60% | ESE Minimum Threshold = 45% (27/60) | Overall Pass Minimum = 50 Marks.<br>
+      &bull; <strong>PRACTICAL:</strong> CIA 60% | ESE 40% | ESE Minimum Threshold = 50% (20/40) | Overall Pass Minimum = 50 Marks.<br>
+      &bull; <strong>EMBEDDED:</strong> CIA 50% | ESE 50% | ESE Minimum Threshold = 45% (22.5/50) | Overall Pass Minimum = 50 Marks.<br>
+      &bull; <strong>Attendance Rules:</strong> &ge; 75% Eligible | 65-74.9% Conditionally Eligible (Requires Medical Condonation) | &lt; 65% Barred with Grade SA.<br>
+      &bull; <strong>SGPA Formula:</strong> SGPA = &sum;(Course Credits &times; Grade Points) / &sum;(Total Enrolled Credits) | Equivalent % = SGPA &times; 10.
+    </div>
+    <div class="footer-signs">
+      <div>Prepared by: Academic Evaluation System</div>
+      <div>Verified by: Head of Department</div>
+      <div>Controller of Examinations (Autonomous)</div>
+    </div>
+  </div>
+</body>
+</html>
